@@ -1,27 +1,18 @@
 package converter;
 
-import java.util.ArrayList;
-import java.util.Stack;
+import java.util.NoSuchElementException;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        int dec = 7;
-        System.out.printf("%d = 0b%s", dec, decimalToBinaryConvert(dec));
+        Scanner scanner = new Scanner(System.in);
+        Converter converter = new Converter();
 
-    }
-
-    static String decimalToBinaryConvert(int dec) {
-        StringBuffer binary = new StringBuffer("");
-        ArrayList<Integer> arrayList = new ArrayList<>();
-        do {
-            arrayList.add(dec % 2);
-            dec /= 2;
-        }   while (dec != 0);
-
-        for (int i = 0; i < arrayList.size(); i++) {
-            binary = binary.append(arrayList.get(i));
+        // it calls method convert(), if input parameters are correct
+        try {
+            System.out.println(converter.convert(scanner.next(), scanner.next(), scanner.next()));
+        } catch (NoSuchElementException e) {
+            System.out.println("Error");
         }
-        binary.reverse();
-        return binary.toString();
     }
 }
